@@ -1,117 +1,159 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, Helvetica, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.home{
-  width:100%;
-  height:100vh;
-  background:url("../assets/hotel.jpg");
-  background-size:cover;
-  background-position:center;
-  position:relative;
+/* MAIN BACKGROUND */
+.home {
+  width: 100%;
+  height: 100vh;
+  background: url("../assets/hotel.jpg") center/cover no-repeat;
+  position: relative;
 }
 
-.overlay{
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.45);
-  padding:30px 80px;
+/* DARK OVERLAY */
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 30px 80px;
+
+  display: flex;
+  flex-direction: column;
 }
 
-.navbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  color:white;
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
 }
 
-.logo{
-  font-size:32px;
-  font-weight:bold;
+.logo {
+  font-size: 32px;
+  font-weight: bold;
 }
 
-.nav-links{
-  display:flex;
-  gap:40px;
-  list-style:none;
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
 }
 
-.nav-links li{
-  cursor:pointer;
+.nav-links li {
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.login-btn{
-  background:black;
-  color:white;
-  border:none;
-  padding:14px 28px;
-  border-radius:40px;
-  cursor:pointer;
-  font-size:16px;
+.nav-links li:hover {
+  opacity: 0.7;
 }
 
-.hero-content{
-  margin-top:140px;
-  color:white;
-  width:650px;
+.login-btn {
+  background: black;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-.tag{
-  background:#4ea3ff;
-  padding:10px 20px;
-  border-radius:30px;
-  font-size:14px;
+/* HERO + SEARCH CENTER WRAPPER */
+.hero-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1200px;
 }
 
-.hero-content h1{
-  font-size:72px;
-  margin-top:30px;
-  line-height:1.1;
+/* HERO TEXT */
+.hero-content {
+  color: white;
+  width: 100%;
+  max-width: 650px;
+  margin-top: 40px;
 }
 
-.hero-content p{
-  margin-top:20px;
-  font-size:18px;
-  line-height:1.7;
+.tag {
+  background: #4ea3ff;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  display: inline-block;
 }
 
-.search-box{
-  margin-top:50px;
-  background:white;
-  padding:30px;
-  border-radius:20px;
-  display:flex;
-  gap:20px;
-  align-items:end;
-  width:fit-content;
+.hero-content h1 {
+  font-size: 64px;
+  margin-top: 25px;
+  line-height: 1.1;
 }
 
-.search-field{
-  display:flex;
-  flex-direction:column;
+.hero-content p {
+  margin-top: 18px;
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.9;
 }
 
-.search-field label{
-  margin-bottom:10px;
-  font-weight:bold;
+/* SEARCH BOX (IMPROVED) */
+.search-box {
+  margin-top: 40px;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+
+  display: flex;
+  gap: 20px;
+  align-items: end;
+  flex-wrap: wrap;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
 
-.search-field input{
-  padding:15px;
-  width:220px;
-  border:1px solid #ddd;
-  border-radius:10px;
+/* INPUT FIELDS */
+.search-field {
+  display: flex;
+  flex-direction: column;
 }
 
-.search-btn{
-  background:black;
-  color:white;
-  border:none;
-  padding:18px 40px;
-  border-radius:12px;
-  cursor:pointer;
-  font-size:18px;
+.search-field label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.search-field input {
+  padding: 14px;
+  width: 220px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.search-field input:focus {
+  border-color: #4ea3ff;
+}
+
+/* BUTTON */
+.search-btn {
+  background: #000;
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.search-btn:hover {
+  background: #333;
 }

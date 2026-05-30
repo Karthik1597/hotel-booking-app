@@ -7,17 +7,16 @@ import "../styles/home.css";
 const Home = () => {
   return (
     <div className="home">
-
-      <Navbar />
-
       <div className="overlay">
 
-        <Hero />
+        <Navbar />
 
-        <SearchBox />
+        <div className="hero-wrapper">
+          <Hero />
+          <SearchBox />
+        </div>
 
       </div>
-
     </div>
   );
 };
