@@ -5,7 +5,7 @@ const Hero = () => {
     <div className="hero-content">
 
       <span className="tag">
-        The Ultimate Hotel Experience
+        Trusted by 10,000+ Travelers
       </span>
 
       <h1>
@@ -15,9 +15,8 @@ const Hero = () => {
       </h1>
 
       <p>
-        Unparalleled luxury and comfort await
-        at the world's most exclusive hotels
-        and resorts.
+        Discover luxury stays, exclusive resorts, and 
+        unforgettable expeiences across Malaysia.
       </p>
 
     </div>

@@ -106,8 +106,9 @@
 /* SEARCH BOX (IMPROVED) */
 .search-box {
   margin-top: 25px;
-  background: white;
-  padding: 25px;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  padding: 20px;
   border-radius: 16px;
 
   display: flex;
@@ -132,7 +133,7 @@
 }
 
 .search-field input {
-  padding: 14px;
+  padding: 12px;
   width: 220px;
   border: 1px solid #ddd;
   border-radius: 10px;
