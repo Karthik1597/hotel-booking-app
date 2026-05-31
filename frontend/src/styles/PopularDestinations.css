@@ -1,9 +1,7 @@
 .destinations-section {
   padding: 90px 80px;
-  background: #ffffff;
-  box-sizing: border-box;
+  background: transparent;
 }
-
 .section-header {
   text-align: center;
   margin-bottom: 50px;
@@ -27,17 +25,13 @@
 }
 
 .destination-card {
-  position: relative;
-  height: 260px;
-  border-radius: 22px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: 0.4s;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
 }
 
 .destination-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.12);
 }
 
 .destination-card img {
