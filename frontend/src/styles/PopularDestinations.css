@@ -1,6 +1,7 @@
 .destinations-section {
   padding: 90px 80px;
   background: #ffffff;
+  box-sizing: border-box;
 }
 
 .section-header {
@@ -21,13 +22,13 @@
 
 .destinations-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
 .destination-card {
   position: relative;
-  height: 380px;
+  height: 260px;
   border-radius: 22px;
   overflow: hidden;
   cursor: pointer;
@@ -56,20 +57,16 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 24px;
-  background: linear-gradient(
-    transparent,
-    rgba(0,0,0,0.85)
-  );
+  padding: 20px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
 }
 
 .destination-overlay h3 {
   color: white;
-  font-size: 28px;
-  margin-bottom: 6px;
+  font-size: 22px;
 }
 
 .destination-overlay span {
   color: rgba(255,255,255,0.85);
-  font-size: 15px;
+  font-size: 14px;
 }
