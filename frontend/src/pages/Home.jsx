@@ -7,16 +7,29 @@ import "../styles/home.css";
 const Home = () => {
   return (
     <div className="home">
-      <div className="overlay">
 
-        <Navbar />
+      <Navbar />
 
-        <div className="hero-wrapper">
-          <Hero />
-          <SearchBox />
+      <div className="hero-container">
+
+        <div className="hero-card">
+
+          <div className="hero-left">
+            <Hero />
+            <SearchBox />
+          </div>
+
+          <div className="hero-right">
+            <img
+              src={require("../assets/hotel.jpg")}
+              alt="Hotel"
+            />
+          </div>
+
         </div>
 
       </div>
+
     </div>
   );
 };
