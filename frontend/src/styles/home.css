@@ -13,10 +13,7 @@ body {
   position: relative;
 }
 
-.quickstay {
-  color: #4ea3ff; /* blue */
-  font-weight: bold;
-}
+
 
 /* DARK OVERLAY */
 .overlay {
