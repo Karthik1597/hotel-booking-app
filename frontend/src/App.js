@@ -1,7 +1,7 @@
 import React from "react";
 import Home from "./pages/Home";
 import PopularDestinations from "./components/PopularDestinations";
-import "./App.css";
+
 
 function App() {
   return (
