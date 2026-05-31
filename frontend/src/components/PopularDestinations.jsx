@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/popularDestinations.css";
+import "../styles/PopularDestinations.css";
 
 import kl from "../assets/kuala-lumpur.jpg";
 import penang from "../assets/penang.jpg";
