@@ -96,10 +96,6 @@ body {
 .hero-content {
   color: white;
   max-width: 650px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 18px; /* ✅ THIS creates proper spacing */
 }
 
 .tag {
