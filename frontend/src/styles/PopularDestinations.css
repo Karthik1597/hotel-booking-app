@@ -2,6 +2,7 @@
   padding: 90px 80px;
   background: #ffffff;
 }
+
 .section-header {
   text-align: center;
   margin-bottom: 50px;
@@ -56,12 +57,16 @@
   right: 0;
   bottom: 0;
   padding: 24px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  background: linear-gradient(
+    transparent,
+    rgba(0,0,0,0.85)
+  );
 }
 
 .destination-overlay h3 {
   color: white;
   font-size: 28px;
+  margin-bottom: 6px;
 }
 
 .destination-overlay span {
