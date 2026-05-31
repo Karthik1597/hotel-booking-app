@@ -160,3 +160,11 @@
 .search-btn:hover {
   background: #333;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-snap-type: y mandatory;
+}
