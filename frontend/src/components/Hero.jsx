@@ -4,9 +4,7 @@ const Hero = () => {
   return (
     <div className="hero-content">
 
-      <span className="tag fade-in" style={{ animationDelay: "0.2s" }}>
-        Trusted by 10,000+ Travelers
-      </span>
+      
 
       <h1 className="fade-in" style={{ animationDelay: "0.4s" }}>
         Discover Your Perfect
