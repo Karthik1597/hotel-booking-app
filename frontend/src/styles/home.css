@@ -1,27 +1,11 @@
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-}
 
 
 /* MAIN BACKGROUND */
 .home {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background: url("../assets/hotel.jpg") center/cover no-repeat;
   position: relative;
-
-  scroll-snap-align: start;
 }
 
 /* DARK OVERLAY */
@@ -155,11 +139,3 @@ body {
   cursor: pointer;
 }
 
-.destinations-section {
-  width: 100%;
-  height: 100vh;
-  padding: 90px 80px;
-  background: #ffffff;
-
-  scroll-snap-align: start;
-}
