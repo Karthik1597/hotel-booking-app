@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import SearchBox from "../components/SearchBox";
 import PopularDestinations from "../components/PopularDestinations";
-
+import FeaturedHotels from "../components/FeaturedHotels";
 import "../styles/home.css";
 
 const Home = () => {
@@ -23,6 +23,7 @@ const Home = () => {
       </div>
 
       <PopularDestinations />
+      <FeaturedHotels />
     </>
   );
 };
