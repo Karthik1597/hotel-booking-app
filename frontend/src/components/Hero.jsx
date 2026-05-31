@@ -6,11 +6,11 @@ const Hero = () => {
 
     
 
-      <h1>
-        Discover Your Perfect
-        <br />
-        Gateway Destination
-      </h1>
+      <h1 className="fade-in" style={{ animationDelay: "0.4s" }}>
+  Discover Your Perfect
+  <br />
+  <span className="quickstay">QuickStay</span> Gateway Destination
+</h1>
 
       <p>
         Discover luxury stays, exclusive resorts, and 
