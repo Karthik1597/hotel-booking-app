@@ -1,6 +1,6 @@
 .featured-section {
   padding: 90px 80px;
-  background: transparent;
+  background: #f9fafb;
 }
 
 .featured-header {
@@ -28,13 +28,15 @@
 
 /* CARD */
 .hotel-card {
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: 0.3s;
 }
 
 .hotel-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 35px rgba(0,0,0,0.12);
 }
 
 /* IMAGE */
