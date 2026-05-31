@@ -36,17 +36,23 @@ body {
   color: white;
 
   width: 100%;
-  flex-wrap: nowrap;
+  gap: 20px;
 }
 
 .logo {
   font-size: 32px;
   font-weight: bold;
+  flex-shrink: 0;
 }
 
 .nav-links {
   display: flex;
   gap: 25px;
+  list-style: none;
+
+  flex: 1;
+  justify-content: center;
+  flex-wrap: nowrap;
 }
 
 .nav-links li {
@@ -61,6 +67,15 @@ body {
 .login-btn {
   white-space: nowrap;
   flex-shrink: 0;
+  margin-left: auto;
+
+  background: black;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 /* HERO */
