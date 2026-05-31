@@ -14,15 +14,19 @@ body {
   position: relative;
 }
 
+
 /* DARK OVERLAY */
 .overlay {
   width: 100%;
   min-height: 100vh;
   background: rgba(0, 0, 0, 0.55);
+
   padding: 20px 40px;
+
   display: flex;
   flex-direction: column;
 }
+
 
 /* NAVBAR */
 .navbar {
@@ -30,6 +34,9 @@ body {
   justify-content: space-between;
   align-items: center;
   color: white;
+
+  width: 100%;
+  flex-wrap: nowrap;
 }
 
 .logo {
@@ -39,8 +46,7 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 40px;
-  list-style: none;
+  gap: 25px;
 }
 
 .nav-links li {
