@@ -7,29 +7,11 @@ import penang from "../assets/penang.jpg";
 import langkawi from "../assets/langkawi.jpg";
 import johor from "../assets/johor-bahru.jpg";
 
-
-
 const destinations = [
-  {
-    name: "Kuala Lumpur",
-    image: kl,
-    hotels: "250+ Hotels",
-  },
-  {
-    name: "Penang",
-    image: penang,
-    hotels: "180+ Hotels",
-  },
-  {
-    name: "Langkawi",
-    image: langkawi,
-    hotels: "120+ Hotels",
-  },
-  {
-    name: "Johor Bahru",
-    image: johor,
-    hotels: "150+ Hotels",
-  },
+  { name: "Kuala Lumpur", image: kl, hotels: "250+ Hotels" },
+  { name: "Penang", image: penang, hotels: "180+ Hotels" },
+  { name: "Langkawi", image: langkawi, hotels: "120+ Hotels" },
+  { name: "Johor Bahru", image: johor, hotels: "150+ Hotels" },
 ];
 
 const PopularDestinations = () => {
@@ -48,14 +30,11 @@ const PopularDestinations = () => {
 
         {destinations.map((item, index) => (
           <div
-            className="destination-card"
             key={index}
-           onClick={() => {
-  console.log("CARD CLICKED");
-}}
+            className="destination-card"
+            onClick={() => navigate(`/hotels/${item.name}`)}
             style={{ cursor: "pointer" }}
           >
-
             <img src={item.image} alt={item.name} />
 
             <div className="destination-overlay">
