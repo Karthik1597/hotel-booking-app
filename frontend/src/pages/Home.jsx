@@ -6,6 +6,8 @@ import PopularDestinations from "../components/PopularDestinations";
 import FeaturedHotels from "../components/FeaturedHotels";
 import "../styles/home.css";
 import WhyChooseQuickStay from "../components/WhyChooseQuickStay";
+import Footer from "../components/Footer";
+import Testimonials from "../components/Testimonials";
 
 const Home = () => {
   return (
@@ -25,7 +27,9 @@ const Home = () => {
 
       <PopularDestinations />
       <FeaturedHotels />
+      <Testimonials />
        <WhyChooseQuickStay />
+       <Footer />
     </>
   );
 };
