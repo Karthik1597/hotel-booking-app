@@ -50,7 +50,9 @@ const PopularDestinations = () => {
           <div
             className="destination-card"
             key={index}
-            onClick={() => navigate(`/hotels/${encodeURIComponent(item.name)}`)}
+           onClick={() => {
+  console.log("CARD CLICKED");
+}}
             style={{ cursor: "pointer" }}
           >
 
