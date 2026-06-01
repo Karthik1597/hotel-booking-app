@@ -1,10 +1,13 @@
 import React from "react";
 import "../styles/PopularDestinations.css";
+import { useNavigate } from "react-router-dom";
 
 import kl from "../assets/kuala-lumpur.jpg";
 import penang from "../assets/penang.jpg";
 import langkawi from "../assets/langkawi.jpg";
 import johor from "../assets/johor-bahru.jpg";
+
+const navigate = useNavigate();
 
 const destinations = [
   {
@@ -41,7 +44,12 @@ const PopularDestinations = () => {
       <div className="destinations-grid">
 
         {destinations.map((item, index) => (
-          <div className="destination-card" key={index}>
+          <div
+            className="destination-card"
+            key={index}
+            onClick={() => navigate(`/hotels/${item.name}`)}
+            style={{ cursor: "pointer" }}
+          >
 
             <img src={item.image} alt={item.name} />
 
