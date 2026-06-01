@@ -50,7 +50,7 @@ const PopularDestinations = () => {
           <div
             className="destination-card"
             key={index}
-            onClick={() => navigate(`/hotels/${item.name}`)}
+            onClick={() => navigate(`/hotels/${encodeURIComponent(item.name)}`)}
             style={{ cursor: "pointer" }}
           >
 
