@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import "../styles/HotelList.css";
 
 const dummyHotels = [
   { name: "Grand Plaza Hotel", price: 250, rating: 4.5 },
@@ -12,32 +13,34 @@ const HotelList = () => {
   const { city } = useParams();
 
   return (
-    <div style={{ padding: "50px" }}>
+  <div className="hotel-page">
 
-      <h1>Hotels in {city}</h1>
+    <h1 className="hotel-title">Hotels in {city}</h1>
 
-      <div style={{ marginTop: "30px" }}>
+    <div className="hotel-grid">
 
-        {dummyHotels.map((hotel, index) => (
-          <div
-            key={index}
-            style={{
-              padding: "20px",
-              marginBottom: "15px",
-              border: "1px solid #ddd",
-              borderRadius: "10px"
-            }}
-          >
+      {dummyHotels.map((hotel, index) => (
+        <div key={index} className="hotel-card">
+
+          <div className="hotel-info">
             <h3>{hotel.name}</h3>
-            <p>Price: RM {hotel.price}</p>
-            <p>Rating: ⭐ {hotel.rating}</p>
-          </div>
-        ))}
 
-      </div>
+            <p className="price">
+              RM {hotel.price} / night
+            </p>
+
+            <p className="rating">
+              ⭐ {hotel.rating} Rating
+            </p>
+          </div>
+
+        </div>
+      ))}
 
     </div>
-  );
+
+  </div>
+);
 };
 
 export default HotelList;
