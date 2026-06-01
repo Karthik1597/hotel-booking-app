@@ -1,4 +1,12 @@
 
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
 
 html,
 body {
@@ -170,4 +178,11 @@ body {
   cursor: pointer;
 }
 
+.destinations-section,
+.featured-section,
+.testimonials-section,
+.features-section {
+  padding-top: 110px;
+  padding-bottom: 110px;
+}
 
