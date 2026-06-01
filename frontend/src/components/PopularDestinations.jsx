@@ -7,7 +7,7 @@ import penang from "../assets/penang.jpg";
 import langkawi from "../assets/langkawi.jpg";
 import johor from "../assets/johor-bahru.jpg";
 
-const navigate = useNavigate();
+
 
 const destinations = [
   {
@@ -33,6 +33,9 @@ const destinations = [
 ];
 
 const PopularDestinations = () => {
+
+  const navigate = useNavigate();
+
   return (
     <section className="destinations-section">
 
