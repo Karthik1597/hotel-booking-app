@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import hotel1 from "../assets/kl-hotel1.jpg";
 import hotel2 from "../assets/kl-hotel2.jpg";
 import hotel3 from "../assets/kl-hotel3.jpg";
@@ -10,8 +10,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 const HotelDetails = () => {
 
+  // ✅ NEW STATE ADDED
+  const [isAvailable, setIsAvailable] = useState(null);
+
   const checkAvailability = () => {
     const available = Math.random() > 0.5;
+
+    // ✅ STORE RESULT
+    setIsAvailable(available);
 
     if (available) {
       toast.success("Room Available ✅");
@@ -87,6 +93,13 @@ const HotelDetails = () => {
           >
             Check Availability
           </button>
+
+          {/* ✅ NEW: BOOK NOW BUTTON */}
+          {isAvailable && (
+            <button className="book-btn">
+              Book Now
+            </button>
+          )}
 
         </div>
 
