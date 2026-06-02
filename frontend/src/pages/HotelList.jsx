@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "../styles/HotelList.css";
 
 import hotel1 from "../assets/kl-hotel1.jpg";
@@ -16,6 +16,7 @@ const dummyHotels = [
 
 const HotelList = () => {
   const { city } = useParams();
+  const navigate = useNavigate();
 
   return (
     <div className="hotel-page">
@@ -25,7 +26,12 @@ const HotelList = () => {
       <div className="hotel-grid">
 
         {dummyHotels.map((hotel, index) => (
-          <div key={index} className="hotel-card">
+          <div
+            key={index}
+            className="hotel-card"
+            onClick={() => navigate("/hotel-details")}
+            style={{ cursor: "pointer" }}
+          >
 
             {/* ONLY ADD IMAGE HERE */}
             <img
