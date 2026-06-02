@@ -13,8 +13,20 @@ const HotelDetails = () => {
   // ✅ NEW STATE ADDED
   const [isAvailable, setIsAvailable] = useState(null);
 
+  // ✅ NEW STATES (IMPORTANT FIX)
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
+
   const checkAvailability = () => {
-    const available = Math.random() > 0.5;
+
+    // ✅ VALIDATION
+    if (!checkIn || !checkOut) {
+      toast.error("Please select Check-in and Check-out dates");
+      return;
+    }
+
+    // ✅ DEMO MODE (always available for now)
+    const available = true;
 
     // ✅ STORE RESULT
     setIsAvailable(available);
@@ -66,14 +78,23 @@ const HotelDetails = () => {
 
         <div className="booking-form">
 
+          {/* ✅ FIXED INPUTS */}
           <div className="form-group">
             <label>Check In</label>
-            <input type="date" />
+            <input
+              type="date"
+              value={checkIn}
+              onChange={(e) => setCheckIn(e.target.value)}
+            />
           </div>
 
           <div className="form-group">
             <label>Check Out</label>
-            <input type="date" />
+            <input
+              type="date"
+              value={checkOut}
+              onChange={(e) => setCheckOut(e.target.value)}
+            />
           </div>
 
           <div className="form-group">
@@ -94,7 +115,7 @@ const HotelDetails = () => {
             Check Availability
           </button>
 
-          {/* ✅ NEW: BOOK NOW BUTTON */}
+          {/* ✅ BOOK NOW BUTTON */}
           {isAvailable && (
             <button className="book-btn">
               Book Now
