@@ -1,7 +1,19 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import "../styles/BookingPage.css";
 
 const BookingPage = () => {
+
+  const location = useLocation();
+
+  const {
+    checkIn,
+    checkOut,
+    guests,
+    price,
+    hotelName
+  } = location.state || {};
+
   return (
     <div className="booking-page">
 
@@ -9,22 +21,24 @@ const BookingPage = () => {
       <div className="booking-left">
 
         <div className="hotel-card">
+
           <img
             src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb"
             alt="hotel"
           />
 
-          <h2>Luxury Hotel Room</h2>
+          <h2>{hotelName}</h2>
 
           <div className="info">
-            <p>📅 Check-in: 10 June</p>
-            <p>📅 Check-out: 12 June</p>
-            <p>👤 Guests: 2</p>
+            <p>📅 Check-in: {checkIn}</p>
+            <p>📅 Check-out: {checkOut}</p>
+            <p>👤 Guests: {guests}</p>
           </div>
 
           <div className="price">
-            RM 250 / night
+            RM {price} / night
           </div>
+
         </div>
 
       </div>

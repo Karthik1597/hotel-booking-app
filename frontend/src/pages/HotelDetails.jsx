@@ -35,8 +35,17 @@ const HotelDetails = () => {
     }
   };
 
+  // ✅ UPDATED ONLY THIS FUNCTION
   const handleBooking = () => {
-    navigate("/booking");
+    navigate("/booking", {
+      state: {
+        checkIn,
+        checkOut,
+        guests: 1,
+        price: 250,
+        hotelName: "Experience Luxury Like Never Before"
+      }
+    });
   };
 
   return (
@@ -44,11 +53,7 @@ const HotelDetails = () => {
 
       <div className="gallery">
 
-        <img
-          src={hotel1}
-          alt="hotel"
-          className="main-image"
-        />
+        <img src={hotel1} alt="hotel" className="main-image" />
 
         <div className="side-images">
           <img src={hotel2} alt="hotel" />
@@ -108,22 +113,14 @@ const HotelDetails = () => {
             </select>
           </div>
 
-          {/* CHECK BUTTON */}
           {isAvailable !== true && (
-            <button
-              className="check-btn"
-              onClick={checkAvailability}
-            >
+            <button className="check-btn" onClick={checkAvailability}>
               Check Availability
             </button>
           )}
 
-          {/* BOOK BUTTON */}
           {isAvailable === true && (
-            <button
-              className="book-btn"
-              onClick={handleBooking}
-            >
+            <button className="book-btn" onClick={handleBooking}>
               Book Now
             </button>
           )}
