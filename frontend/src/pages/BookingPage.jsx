@@ -8,19 +8,23 @@ const BookingPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const {
-    checkIn,
-    checkOut,
-    guests,
-    price,
-    hotelName
-  } = location.state || {};
+  const data = location.state;
+
+  const checkIn = data?.checkIn;
+  const checkOut = data?.checkOut;
+  const guests = data?.guests;
+  const price = data?.price;
+  const hotelName = data?.hotelName;
 
   const handleConfirmBooking = () => {
 
-    // basic validation
     if (!hotelName || !checkIn || !checkOut) {
       toast.error("Missing booking details ❌");
+      return;
+    }
+
+    if (!guests) {
+      toast.error("Guests not selected ❌");
       return;
     }
 

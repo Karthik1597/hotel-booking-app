@@ -16,6 +16,7 @@ const HotelDetails = () => {
   const [isAvailable, setIsAvailable] = useState(null);
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
+  const [guests, setGuests] = useState(1);
 
   const checkAvailability = () => {
 
@@ -35,13 +36,12 @@ const HotelDetails = () => {
     }
   };
 
-  // ✅ UPDATED ONLY THIS FUNCTION
   const handleBooking = () => {
     navigate("/booking", {
       state: {
         checkIn,
         checkOut,
-        guests: 1,
+        guests,
         price: 250,
         hotelName: "Experience Luxury Like Never Before"
       }
@@ -105,11 +105,14 @@ const HotelDetails = () => {
           <div className="form-group">
             <label>Guests</label>
 
-            <select>
-              <option>1 Guest</option>
-              <option>2 Guests</option>
-              <option>3 Guests</option>
-              <option>4 Guests</option>
+            <select
+              value={guests}
+              onChange={(e) => setGuests(e.target.value)}
+            >
+              <option value={1}>1 Guest</option>
+              <option value={2}>2 Guests</option>
+              <option value={3}>3 Guests</option>
+              <option value={4}>4 Guests</option>
             </select>
           </div>
 
