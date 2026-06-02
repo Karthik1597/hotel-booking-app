@@ -1,0 +1,35 @@
+.success-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #d1fae5, #bfdbfe);
+}
+
+.success-box {
+  background: white;
+  padding: 50px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.success-box h1 {
+  color: #16a34a;
+  margin-bottom: 10px;
+}
+
+.success-box p {
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.success-box button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}

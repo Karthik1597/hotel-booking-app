@@ -1,10 +1,12 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/BookingPage.css";
+import { toast } from "react-toastify";
 
 const BookingPage = () => {
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const {
     checkIn,
@@ -13,6 +15,21 @@ const BookingPage = () => {
     price,
     hotelName
   } = location.state || {};
+
+  const handleConfirmBooking = () => {
+
+    // basic validation
+    if (!hotelName || !checkIn || !checkOut) {
+      toast.error("Missing booking details ❌");
+      return;
+    }
+
+    toast.success("Booking Confirmed 🎉");
+
+    setTimeout(() => {
+      navigate("/success");
+    }, 1000);
+  };
 
   return (
     <div className="booking-page">
@@ -56,7 +73,10 @@ const BookingPage = () => {
 
           <textarea placeholder="Special Request (optional)" />
 
-          <button type="button">
+          <button
+            type="button"
+            onClick={handleConfirmBooking}
+          >
             Confirm Booking
           </button>
 
