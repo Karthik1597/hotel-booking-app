@@ -5,73 +5,97 @@ import hotel3 from "../assets/kl-hotel3.jpg";
 
 import "../styles/HotelDetails.css";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const HotelDetails = () => {
-    return (
-        <div className="details-page">
 
-            <div className="gallery">
+  const checkAvailability = () => {
+    const available = Math.random() > 0.5;
 
-                <img src={hotel1} alt="hotel" className="main-image" />
+    if (available) {
+      toast.success("Room Available ✅");
+    } else {
+      toast.error("Room Not Available ❌");
+    }
+  };
 
-                <div className="side-images">
-                    <img src={hotel2} alt="hotel" />
-                    <img src={hotel3} alt="hotel" />
-                </div>
+  return (
+    <div className="details-page">
 
-            </div>
+      <div className="gallery">
 
-            <div className="hotel-header">
+        <img
+          src={hotel1}
+          alt="hotel"
+          className="main-image"
+        />
 
-                <div>
-                    <h1>Experience Luxury Like Never Before</h1>
+        <div className="side-images">
+          <img src={hotel2} alt="hotel" />
+          <img src={hotel3} alt="hotel" />
+        </div>
 
-                    <div className="amenities">
-                        <span>🛎 Room Service</span>
-                        <span>🏔 Mountain View</span>
-                        <span>🏊 Pool Access</span>
-                    </div>
-                </div>
+      </div>
 
-                <h2>RM 250 / night</h2>
+      <div className="hotel-header">
 
-            </div>
+        <div>
+          <h1>Experience Luxury Like Never Before</h1>
 
-            <div className="availability-box">
+          <div className="amenities">
+            <span>🛎 Room Service</span>
+            <span>🏔 Mountain View</span>
+            <span>🏊 Pool Access</span>
+          </div>
+        </div>
 
-                <h3>Check Availability</h3>
+        <h2>RM 250 / night</h2>
 
-                <div className="booking-form">
+      </div>
 
-                    <div className="form-group">
-                        <label>Check In</label>
-                        <input type="date" />
-                    </div>
+      <div className="availability-box">
 
-                    <div className="form-group">
-                        <label>Check Out</label>
-                        <input type="date" />
-                    </div>
+        <h3>Check Availability</h3>
 
-                    <div className="form-group">
-                        <label>Guests</label>
-                        <select>
-                            <option>1 Guest</option>
-                            <option>2 Guests</option>
-                            <option>3 Guests</option>
-                            <option>4 Guests</option>
-                        </select>
-                    </div>
+        <div className="booking-form">
 
-                    <button className="check-btn">
-                        Check Availability
-                    </button>
+          <div className="form-group">
+            <label>Check In</label>
+            <input type="date" />
+          </div>
 
-                </div>
+          <div className="form-group">
+            <label>Check Out</label>
+            <input type="date" />
+          </div>
 
-            </div>
+          <div className="form-group">
+            <label>Guests</label>
+
+            <select>
+              <option>1 Guest</option>
+              <option>2 Guests</option>
+              <option>3 Guests</option>
+              <option>4 Guests</option>
+            </select>
+          </div>
+
+          <button
+            className="check-btn"
+            onClick={checkAvailability}
+          >
+            Check Availability
+          </button>
 
         </div>
-    );
+
+      </div>
+
+      <ToastContainer />
+
+    </div>
+  );
 };
 
 export default HotelDetails;
