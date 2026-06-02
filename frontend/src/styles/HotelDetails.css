@@ -100,3 +100,39 @@
   border-radius: 12px;
   cursor: pointer;
 }
+
+/* 🔵 BOOK NOW BUTTON (NEW) */
+.book-btn {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+  width: 220px; /* same size as inputs */
+}
+
+.book-btn:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+
+/* 🔁 MAKE CHECK BUTTON SAME SIZE AS BOOK BUTTON */
+.check-btn {
+  background: black;
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 220px;
+  transition: 0.3s ease;
+}
+
+.check-btn:hover {
+  background: #222;
+  transform: scale(1.05);
+}

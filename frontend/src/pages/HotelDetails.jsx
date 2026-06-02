@@ -10,25 +10,19 @@ import "react-toastify/dist/ReactToastify.css";
 
 const HotelDetails = () => {
 
-  // ✅ NEW STATE ADDED
   const [isAvailable, setIsAvailable] = useState(null);
-
-  // ✅ NEW STATES (IMPORTANT FIX)
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
 
   const checkAvailability = () => {
 
-    // ✅ VALIDATION
     if (!checkIn || !checkOut) {
       toast.error("Please select Check-in and Check-out dates");
       return;
     }
 
-    // ✅ DEMO MODE (always available for now)
     const available = true;
 
-    // ✅ STORE RESULT
     setIsAvailable(available);
 
     if (available) {
@@ -78,7 +72,6 @@ const HotelDetails = () => {
 
         <div className="booking-form">
 
-          {/* ✅ FIXED INPUTS */}
           <div className="form-group">
             <label>Check In</label>
             <input
@@ -108,15 +101,18 @@ const HotelDetails = () => {
             </select>
           </div>
 
-          <button
-            className="check-btn"
-            onClick={checkAvailability}
-          >
-            Check Availability
-          </button>
+          {/* ✅ BUTTON SWITCH LOGIC */}
 
-          {/* ✅ BOOK NOW BUTTON */}
-          {isAvailable && (
+          {isAvailable !== true && (
+            <button
+              className="check-btn"
+              onClick={checkAvailability}
+            >
+              Check Availability
+            </button>
+          )}
+
+          {isAvailable === true && (
             <button className="book-btn">
               Book Now
             </button>
