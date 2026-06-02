@@ -4,11 +4,14 @@ import hotel2 from "../assets/kl-hotel2.jpg";
 import hotel3 from "../assets/kl-hotel3.jpg";
 
 import "../styles/HotelDetails.css";
+import { useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const HotelDetails = () => {
+
+  const navigate = useNavigate();
 
   const [isAvailable, setIsAvailable] = useState(null);
   const [checkIn, setCheckIn] = useState("");
@@ -30,6 +33,10 @@ const HotelDetails = () => {
     } else {
       toast.error("Room Not Available ❌");
     }
+  };
+
+  const handleBooking = () => {
+    navigate("/booking");
   };
 
   return (
@@ -101,8 +108,7 @@ const HotelDetails = () => {
             </select>
           </div>
 
-          {/* ✅ BUTTON SWITCH LOGIC */}
-
+          {/* CHECK BUTTON */}
           {isAvailable !== true && (
             <button
               className="check-btn"
@@ -112,8 +118,12 @@ const HotelDetails = () => {
             </button>
           )}
 
+          {/* BOOK BUTTON */}
           {isAvailable === true && (
-            <button className="book-btn">
+            <button
+              className="book-btn"
+              onClick={handleBooking}
+            >
               Book Now
             </button>
           )}
