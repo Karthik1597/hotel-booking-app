@@ -1,31 +1,43 @@
 import React from "react";
 import hotel1 from "../assets/kl-hotel1.jpg";
+import hotel2 from "../assets/kl-hotel2.jpg";
+import hotel3 from "../assets/kl-hotel3.jpg";
+
+import "../styles/HotelDetails.css";
 
 const HotelDetails = () => {
-    return (
-        <div style={{ padding: "40px" }}>
-            <h1>Grand Plaza Hotel</h1>
+  return (
+    <div className="details-page">
 
-            <img
-                src={hotel1}
-                alt="Grand Plaza Hotel"
-                style={{
-                    width: "100%",
-                    maxWidth: "800px",
-                    borderRadius: "12px"
-                }}
-            />
+      <div className="gallery">
 
-            <h2>RM 250 / night</h2>
+        <img src={hotel1} alt="hotel" className="main-image" />
 
-            <p>⭐ 4.5 Rating</p>
-
-            <p>
-                Luxury hotel located in the city center with
-                swimming pool, gym and free breakfast.
-            </p>
+        <div className="side-images">
+          <img src={hotel2} alt="hotel" />
+          <img src={hotel3} alt="hotel" />
         </div>
-    );
+
+      </div>
+
+      <div className="hotel-header">
+
+        <div>
+          <h1>Experience Luxury Like Never Before</h1>
+
+          <div className="amenities">
+            <span>🛎 Room Service</span>
+            <span>🏔 Mountain View</span>
+            <span>🏊 Pool Access</span>
+          </div>
+        </div>
+
+        <h2>RM 250 / night</h2>
+
+      </div>
+
+    </div>
+  );
 };
 
 export default HotelDetails;
