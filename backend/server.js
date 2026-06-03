@@ -9,23 +9,11 @@ dotenv.config();
 
 const app = express();
 
-// ✅ SAFE CORS (PRODUCTION READY)
-const allowedOrigins = [
-  "https://hotel-booking-app-flax.vercel.app"
-];
-
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(null, false);
-    }
-  },
+  origin: "https://hotel-booking-app-flax.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
 }));
-
-app.options("*", cors());
 
 app.use(express.json());
 
