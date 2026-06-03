@@ -42,12 +42,24 @@
 
 .price {
   margin: 15px;
-  padding: 10px;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: white;
-  border-radius: 10px;
-  font-weight: bold;
-  text-align: center;
+  padding: 20px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  color: #1f2937;
+}
+
+.price p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.price h3 {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #d1d5db;
+  color: #2563eb;
+  font-size: 24px;
 }
 
 /* RIGHT SIDE */

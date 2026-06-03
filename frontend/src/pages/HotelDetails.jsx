@@ -4,7 +4,7 @@ import hotel2 from "../assets/kl-hotel2.jpg";
 import hotel3 from "../assets/kl-hotel3.jpg";
 
 import "../styles/HotelDetails.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,6 +12,14 @@ import "react-toastify/dist/ReactToastify.css";
 const HotelDetails = () => {
 
   const navigate = useNavigate();
+
+  const location = useLocation();
+
+  const hotel = location.state;
+
+  const hotelName = hotel?.name || "Luxury Hotel";
+  const hotelPrice = hotel?.price || 250;
+  const hotelImage = hotel?.image || hotel1;
 
   const [isAvailable, setIsAvailable] = useState(null);
   const [checkIn, setCheckIn] = useState("");
@@ -42,8 +50,8 @@ const HotelDetails = () => {
         checkIn,
         checkOut,
         guests,
-        price: 250,
-        hotelName: "Experience Luxury Like Never Before"
+        price: hotelPrice,
+        hotelName: hotelName
       }
     });
   };
@@ -53,8 +61,11 @@ const HotelDetails = () => {
 
       <div className="gallery">
 
-        <img src={hotel1} alt="hotel" className="main-image" />
-
+        <img
+          src={hotelImage}
+          alt="hotel"
+          className="main-image"
+        />
         <div className="side-images">
           <img src={hotel2} alt="hotel" />
           <img src={hotel3} alt="hotel" />
@@ -65,7 +76,7 @@ const HotelDetails = () => {
       <div className="hotel-header">
 
         <div>
-          <h1>Experience Luxury Like Never Before</h1>
+          <h1>{hotelName}</h1>
 
           <div className="amenities">
             <span>🛎 Room Service</span>
@@ -74,7 +85,7 @@ const HotelDetails = () => {
           </div>
         </div>
 
-        <h2>RM 250 / night</h2>
+        <h2>RM {hotelPrice} / night</h2>
 
       </div>
 

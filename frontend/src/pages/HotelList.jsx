@@ -15,25 +15,32 @@ const dummyHotels = [
 ];
 
 const HotelList = () => {
+
   const { city } = useParams();
   const navigate = useNavigate();
 
   return (
     <div className="hotel-page">
 
-      <h1 className="hotel-title">Hotels in {city}</h1>
+      <h1 className="hotel-title">
+        Hotels in {city}
+      </h1>
 
       <div className="hotel-grid">
 
         {dummyHotels.map((hotel, index) => (
+
           <div
             key={index}
             className="hotel-card"
-            onClick={() => navigate("/hotel-details")}
             style={{ cursor: "pointer" }}
+            onClick={() =>
+              navigate("/hotel-details", {
+                state: hotel
+              })
+            }
           >
 
-            {/* ONLY ADD IMAGE HERE */}
             <img
               src={hotel.image}
               alt={hotel.name}
@@ -41,6 +48,7 @@ const HotelList = () => {
             />
 
             <div className="hotel-info">
+
               <h3>{hotel.name}</h3>
 
               <p className="price">
@@ -50,9 +58,11 @@ const HotelList = () => {
               <p className="rating">
                 ⭐ {hotel.rating} Rating
               </p>
+
             </div>
 
           </div>
+
         ))}
 
       </div>
