@@ -9,9 +9,8 @@ const BookingSuccess = () => {
 
         <h1>🎉 Booking Confirmed!</h1>
 
-        <p>Your hotel booking is successful.</p>
-
-        <p>We have sent confirmation to your email.</p>
+        <p>Your payment was successful.</p>
+        <p>Booking has been confirmed.</p>
 
         <button onClick={() => window.location.href = "/"}>
           Back to Home
