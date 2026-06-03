@@ -16,6 +16,19 @@ const BookingPage = () => {
   const price = data?.price;
   const hotelName = data?.hotelName;
 
+  // Calculate Nights
+  const checkInDate = new Date(checkIn);
+  const checkOutDate = new Date(checkOut);
+
+  const timeDifference =
+    checkOutDate.getTime() - checkInDate.getTime();
+
+  const nights = Math.ceil(
+    timeDifference / (1000 * 60 * 60 * 24)
+  );
+
+  const totalPrice = nights * price;
+
   const handleConfirmBooking = () => {
 
     if (!hotelName || !checkIn || !checkOut) {
@@ -28,7 +41,7 @@ const BookingPage = () => {
       return;
     }
 
-    toast.success("Booking Confirmed 🎉");
+    toast.success("Ready For Payment 💳");
 
     setTimeout(() => {
       navigate("/success");
@@ -57,7 +70,9 @@ const BookingPage = () => {
           </div>
 
           <div className="price">
-            RM {price} / night
+            <p>💰 Price Per Night: RM {price}</p>
+            <p>🌙 Nights: {nights}</p>
+            <h3>Total: RM {totalPrice}</h3>
           </div>
 
         </div>
@@ -71,17 +86,30 @@ const BookingPage = () => {
 
         <form>
 
-          <input type="text" placeholder="Full Name" />
-          <input type="text" placeholder="Phone Number" />
-          <input type="email" placeholder="Email Address" />
+          <input
+            type="text"
+            placeholder="Full Name"
+          />
 
-          <textarea placeholder="Special Request (optional)" />
+          <input
+            type="text"
+            placeholder="Phone Number"
+          />
+
+          <input
+            type="email"
+            placeholder="Email Address"
+          />
+
+          <textarea
+            placeholder="Special Request (optional)"
+          />
 
           <button
             type="button"
             onClick={handleConfirmBooking}
           >
-            Confirm Booking
+            Proceed To Payment
           </button>
 
         </form>
