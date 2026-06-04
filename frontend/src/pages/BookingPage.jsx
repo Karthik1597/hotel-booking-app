@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import "../styles/BookingPage.css";
 import { toast } from "react-toastify";
@@ -6,6 +6,11 @@ import { toast } from "react-toastify";
 const BookingPage = () => {
   const location = useLocation();
   const data = location.state;
+
+  const [fullName, setFullName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [request, setRequest] = useState("");
 
   const checkIn = data?.checkIn;
   const checkOut = data?.checkOut;
@@ -16,11 +21,9 @@ const BookingPage = () => {
   const checkInDate = new Date(checkIn);
   const checkOutDate = new Date(checkOut);
 
-  const timeDifference = checkOutDate - checkInDate;
-
   const nights = Math.max(
     1,
-    Math.ceil(timeDifference / (1000 * 60 * 60 * 24))
+    Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24))
   );
 
   const totalPrice = nights * price;
@@ -31,14 +34,9 @@ const BookingPage = () => {
       return;
     }
 
-    if (!guests) {
-      toast.error("Guests not selected ❌");
-      return;
-    }
-
     toast.success("Redirecting to payment 💳");
 
-    // ✅ IMPORTANT FIX (SAVE DATA BEFORE STRIPE)
+    // Save FULL DATA including user details
     localStorage.setItem(
       "bookingData",
       JSON.stringify({
@@ -47,6 +45,10 @@ const BookingPage = () => {
         checkOut,
         guests,
         totalPrice,
+        fullName,
+        phone,
+        email,
+        request,
       })
     );
 
@@ -83,24 +85,15 @@ const BookingPage = () => {
     <div className="booking-page">
       <div className="booking-left">
         <div className="hotel-card">
-          <img
-            src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb"
-            alt="hotel"
-          />
-
           <h2>{hotelName}</h2>
 
           <div className="info">
-            <p>📅 Check-in: {checkIn}</p>
-            <p>📅 Check-out: {checkOut}</p>
-            <p>👤 Guests: {guests}</p>
+            <p>Check-in: {checkIn}</p>
+            <p>Check-out: {checkOut}</p>
+            <p>Guests: {guests}</p>
           </div>
 
-          <div className="price">
-            <p>💰 Price Per Night: RM {price}</p>
-            <p>🌙 Nights: {nights}</p>
-            <h3>Total: RM {totalPrice}</h3>
-          </div>
+          <h3>Total: RM {totalPrice}</h3>
         </div>
       </div>
 
@@ -108,10 +101,32 @@ const BookingPage = () => {
         <h2>Guest Information</h2>
 
         <form>
-          <input type="text" placeholder="Full Name" />
-          <input type="text" placeholder="Phone Number" />
-          <input type="email" placeholder="Email Address" />
-          <textarea placeholder="Special Request (optional)" />
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+          />
+
+          <input
+            type="text"
+            placeholder="Phone Number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+
+          <input
+            type="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <textarea
+            placeholder="Special Request (optional)"
+            value={request}
+            onChange={(e) => setRequest(e.target.value)}
+          />
 
           <button type="button" onClick={handleConfirmBooking}>
             Proceed To Payment
