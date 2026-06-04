@@ -38,7 +38,7 @@ const BookingPage = () => {
 
     toast.success("Redirecting to payment 💳");
 
-    // ✅ SAVE DATA BEFORE STRIPE REDIRECT
+    // ✅ IMPORTANT FIX (SAVE DATA BEFORE STRIPE)
     localStorage.setItem(
       "bookingData",
       JSON.stringify({

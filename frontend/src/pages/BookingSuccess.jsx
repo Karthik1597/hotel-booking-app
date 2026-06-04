@@ -1,12 +1,20 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "../styles/BookingSuccess.css";
 
 const BookingSuccess = () => {
+  const location = useLocation();
+
   useEffect(() => {
     const saveBooking = async () => {
-      const bookingData = JSON.parse(localStorage.getItem("bookingData"));
+      const saved = JSON.parse(localStorage.getItem("bookingData"));
 
-      if (!bookingData) return;
+      if (!saved) return;
+
+      const finalBooking = {
+        ...saved,
+        paymentStatus: "Paid",
+      };
 
       try {
         await fetch(
@@ -16,13 +24,13 @@ const BookingSuccess = () => {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(bookingData),
+            body: JSON.stringify(finalBooking),
           }
         );
 
         localStorage.removeItem("bookingData");
-      } catch (error) {
-        console.log("Booking save error:", error);
+      } catch (err) {
+        console.log("Save booking error:", err);
       }
     };
 
@@ -33,7 +41,6 @@ const BookingSuccess = () => {
     <div className="success-page">
       <div className="success-box">
         <h1>🎉 Booking Confirmed!</h1>
-
         <p>Your payment was successful.</p>
         <p>Booking has been confirmed.</p>
 
