@@ -4,9 +4,7 @@ import "../styles/BookingPage.css";
 import { toast } from "react-toastify";
 
 const BookingPage = () => {
-
   const location = useLocation();
-
   const data = location.state;
 
   const checkIn = data?.checkIn;
@@ -15,7 +13,6 @@ const BookingPage = () => {
   const price = data?.price;
   const hotelName = data?.hotelName;
 
-  // Calculate Nights
   const checkInDate = new Date(checkIn);
   const checkOutDate = new Date(checkOut);
 
@@ -28,9 +25,7 @@ const BookingPage = () => {
 
   const totalPrice = nights * price;
 
-  // ✅ STRIPE PAYMENT
   const handleConfirmBooking = async () => {
-
     if (!hotelName || !checkIn || !checkOut) {
       toast.error("Missing booking details ❌");
       return;
@@ -43,21 +38,33 @@ const BookingPage = () => {
 
     toast.success("Redirecting to payment 💳");
 
+    // ✅ SAVE DATA BEFORE STRIPE REDIRECT
+    localStorage.setItem(
+      "bookingData",
+      JSON.stringify({
+        hotelName,
+        checkIn,
+        checkOut,
+        guests,
+        totalPrice,
+      })
+    );
+
     try {
       const response = await fetch(
         "https://hotel-booking-api-8ysd.onrender.com/api/payment/create-checkout-session",
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             hotelName,
             price: totalPrice,
             checkIn,
             checkOut,
-            guests
-          })
+            guests,
+          }),
         }
       );
 
@@ -66,7 +73,6 @@ const BookingPage = () => {
       if (data.url) {
         window.location.href = data.url;
       }
-
     } catch (error) {
       console.log(error);
       toast.error("Payment failed ❌");
@@ -75,11 +81,8 @@ const BookingPage = () => {
 
   return (
     <div className="booking-page">
-
       <div className="booking-left">
-
         <div className="hotel-card">
-
           <img
             src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb"
             alt="hotel"
@@ -98,17 +101,13 @@ const BookingPage = () => {
             <p>🌙 Nights: {nights}</p>
             <h3>Total: RM {totalPrice}</h3>
           </div>
-
         </div>
-
       </div>
 
       <div className="booking-right">
-
         <h2>Guest Information</h2>
 
         <form>
-
           <input type="text" placeholder="Full Name" />
           <input type="text" placeholder="Phone Number" />
           <input type="email" placeholder="Email Address" />
@@ -117,11 +116,8 @@ const BookingPage = () => {
           <button type="button" onClick={handleConfirmBooking}>
             Proceed To Payment
           </button>
-
         </form>
-
       </div>
-
     </div>
   );
 };
