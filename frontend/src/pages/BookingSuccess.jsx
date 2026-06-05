@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import "../styles/BookingSuccess.css";
 
 const BookingSuccess = () => {
-  const location = useLocation();
 
   useEffect(() => {
     const saveBooking = async () => {
