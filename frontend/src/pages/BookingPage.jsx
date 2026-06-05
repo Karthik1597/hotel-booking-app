@@ -21,9 +21,11 @@ const BookingPage = () => {
   const checkInDate = new Date(checkIn);
   const checkOutDate = new Date(checkOut);
 
+  const timeDifference = checkOutDate - checkInDate;
+
   const nights = Math.max(
     1,
-    Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24))
+    Math.ceil(timeDifference / (1000 * 60 * 60 * 24))
   );
 
   const totalPrice = nights * price;
@@ -34,9 +36,13 @@ const BookingPage = () => {
       return;
     }
 
+    if (!fullName || !phone || !email) {
+      toast.error("Please fill all guest details ❌");
+      return;
+    }
+
     toast.success("Redirecting to payment 💳");
 
-    // Save FULL DATA including user details
     localStorage.setItem(
       "bookingData",
       JSON.stringify({
@@ -70,10 +76,10 @@ const BookingPage = () => {
         }
       );
 
-      const data = await response.json();
+      const result = await response.json();
 
-      if (data.url) {
-        window.location.href = data.url;
+      if (result.url) {
+        window.location.href = result.url;
       }
     } catch (error) {
       console.log(error);
@@ -83,24 +89,40 @@ const BookingPage = () => {
 
   return (
     <div className="booking-page">
+
       <div className="booking-left">
+
         <div className="hotel-card">
+
+          <img
+            src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb"
+            alt="hotel"
+          />
+
           <h2>{hotelName}</h2>
 
           <div className="info">
-            <p>Check-in: {checkIn}</p>
-            <p>Check-out: {checkOut}</p>
-            <p>Guests: {guests}</p>
+            <p>📅 Check-in: {checkIn}</p>
+            <p>📅 Check-out: {checkOut}</p>
+            <p>👤 Guests: {guests}</p>
           </div>
 
-          <h3>Total: RM {totalPrice}</h3>
+          <div className="price">
+            <p>💰 Price Per Night: RM {price}</p>
+            <p>🌙 Nights: {nights}</p>
+            <h3>Total: RM {totalPrice}</h3>
+          </div>
+
         </div>
+
       </div>
 
       <div className="booking-right">
+
         <h2>Guest Information</h2>
 
         <form>
+
           <input
             type="text"
             placeholder="Full Name"
@@ -128,11 +150,17 @@ const BookingPage = () => {
             onChange={(e) => setRequest(e.target.value)}
           />
 
-          <button type="button" onClick={handleConfirmBooking}>
+          <button
+            type="button"
+            onClick={handleConfirmBooking}
+          >
             Proceed To Payment
           </button>
+
         </form>
+
       </div>
+
     </div>
   );
 };
