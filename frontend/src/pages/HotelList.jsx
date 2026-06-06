@@ -17,16 +17,18 @@ const HotelList = () => {
 
         const data = await res.json();
 
-        // filter by city
-        const filtered = hotels.filter((hotel) =>
-          hotel.city?.toLowerCase().trim() === city?.toLowerCase().trim()
+        const filtered = data.filter(
+          (hotel) =>
+            hotel.city?.toLowerCase().trim() ===
+            city?.toLowerCase().trim()
         );
 
         setHotels(filtered);
+
+        console.log("CITY PARAM:", city);
+        console.log("FILTERED HOTELS:", filtered);
       } catch (error) {
         console.log(error);
-        console.log("CITY PARAM:", city);
-
       }
     };
 
