@@ -1,77 +1,70 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/FeaturedHotels.css";
 
-import hotel1 from "../assets/hotel1.jpg";
-import hotel2 from "../assets/hotel2.jpg";
-import hotel3 from "../assets/hotel3.jpg";
-import hotel4 from "../assets/hotel4.jpg";
-
-const hotels = [
-  {
-    name: "Grand Plaza Hotel",
-    location: "Kuala Lumpur",
-    price: "RM 180/night",
-    rating: "4.8",
-    image: hotel1,
-  },
-  {
-    name: "Sunrise Resort",
-    location: "Langkawi",
-    price: "RM 220/night",
-    rating: "4.7",
-    image: hotel2,
-  },
-  {
-    name: "Seaview Inn",
-    location: "Penang",
-    price: "RM 150/night",
-    rating: "4.6",
-    image: hotel3,
-  },
-  {
-    name: "City Comfort Hotel",
-    location: "Johor Bahru",
-    price: "RM 130/night",
-    rating: "4.5",
-    image: hotel4,
-  },
-];
-
 const FeaturedHotels = () => {
+  const [hotels, setHotels] = useState([]);
+
+  useEffect(() => {
+    const fetchHotels = async () => {
+      try {
+        const res = await fetch(
+          "https://hotel-booking-api-8ysd.onrender.com/api/hotels"
+        );
+
+        const data = await res.json();
+
+        // Show first 4 hotels
+        setHotels(data.slice(0, 4));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchHotels();
+  }, []);
+
   return (
     <section className="featured-section">
-
       <div className="featured-header">
         <h2>Featured Hotels</h2>
         <p>Top-rated stays handpicked for your comfort</p>
       </div>
 
       <div className="hotel-grid">
-
-        {hotels.map((hotel, index) => (
-          <div className="hotel-card" key={index}>
-
+        {hotels.map((hotel) => (
+          <div className="hotel-card" key={hotel._id}>
             <div className="hotel-image">
-              <img src={hotel.image} alt={hotel.name} />
+              <img
+                src={hotel.image}
+                alt={hotel.name}
+              />
             </div>
 
             <div className="hotel-info">
               <h3>{hotel.name}</h3>
-              <p>{hotel.location}</p>
+
+              <p>
+                {hotel.city
+                  ?.replace(/\b\w/g, (c) => c.toUpperCase())}
+              </p>
 
               <div className="hotel-bottom">
-                <span className="price">{hotel.price}</span>
-                <span className="rating">⭐ {hotel.rating}</span>
+                <span className="price">
+                  RM {hotel.price}/night
+                </span>
+
+                <span className="rating">
+                  ⭐ {hotel.rating}
+                </span>
               </div>
 
-              <button className="book-btn">Book Now</button>
+              <button className="book-btn">
+                Book Now
+              </button>
             </div>
-
           </div>
         ))}
-
       </div>
-
     </section>
   );
 };
