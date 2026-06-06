@@ -15,7 +15,18 @@ const FeaturedHotels = () => {
 
         const data = await res.json();
 
-        // group by city
+        // normalize city names (VERY IMPORTANT FIX)
+        const normalizeCity = (city) => {
+          const c = city?.toLowerCase();
+
+          if (c?.includes("kl") || c?.includes("kuala")) return "kl";
+          if (c?.includes("penang")) return "penang";
+          if (c?.includes("langkawi")) return "langkawi";
+          if (c?.includes("johor")) return "johor";
+
+          return c;
+        };
+
         const grouped = {
           kl: [],
           penang: [],
@@ -24,14 +35,14 @@ const FeaturedHotels = () => {
         };
 
         data.forEach((hotel) => {
-          const city = hotel.city?.toLowerCase();
+          const city = normalizeCity(hotel.city);
 
           if (grouped[city]) {
             grouped[city].push(hotel);
           }
         });
 
-        // take 1 from each city (total 4)
+        // ensure 4 featured hotels (1 per city if exists)
         const featured = [
           grouped.kl[0],
           grouped.penang[0],
@@ -41,7 +52,7 @@ const FeaturedHotels = () => {
 
         setHotels(featured);
       } catch (error) {
-        console.log(error);
+        console.log("Error fetching hotels:", error);
       }
     };
 
@@ -59,7 +70,11 @@ const FeaturedHotels = () => {
         {hotels.map((hotel) => (
           <div className="hotel-card" key={hotel._id}>
             <div className="hotel-image">
-              <img src={hotel.image} alt={hotel.name} />
+              <img
+                src={hotel.image}
+                alt={hotel.name}
+                loading="lazy"
+              />
             </div>
 
             <div className="hotel-info">
