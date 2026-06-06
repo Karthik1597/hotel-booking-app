@@ -39,7 +39,6 @@ const AdminDashboard = () => {
 
         <ul>
           <li>Dashboard</li>
-          <li>Bookings</li>
           <li>Add Room</li>
           <li>Users</li>
         </ul>
