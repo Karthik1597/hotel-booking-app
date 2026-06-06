@@ -10,6 +10,7 @@ import HotelDetails from "./pages/HotelDetails";
 import BookingPage from "./pages/BookingPage";
 import BookingSuccess from "./pages/BookingSuccess";
 import AdminLogin from "./admin/AdminLogin";
+import AdminDashboard from "./admin/AdminDashboard";
 
 function App() {
   return (
@@ -36,7 +37,9 @@ function App() {
         <Route path="/success" element={<BookingSuccess />} />
 
         <Route path="/admin" element={<AdminLogin />} />
-        
+
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
       </Routes>
     </BrowserRouter>
   );
