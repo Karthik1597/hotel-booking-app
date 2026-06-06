@@ -26,7 +26,7 @@ const AdminDashboard = () => {
 
   // TOTAL REVENUE
   const totalRevenue = bookings.reduce(
-    (acc, item) => acc + (item.totalAmount || 0),
+    (acc, item) => acc + (item.totalPrice || 0),
     0
   );
 
@@ -69,23 +69,24 @@ const AdminDashboard = () => {
         <table>
           <thead>
             <tr>
-              <th>User</th>
-              <th>Room</th>
+              <th>Customer Name</th>
+              <th>Hotel Name</th>
               <th>Amount</th>
               <th>Status</th>
             </tr>
           </thead>
 
           <tbody>
-            {bookings.slice(0, 5).map((b) => (
-              <tr key={b._id}>
-                <td>{b.userName}</td>
-                <td>{b.roomName}</td>
-                <td>RM {b.totalAmount}</td>
-                <td>{b.paymentStatus}</td>
+            {bookings.slice(0, 5).map((booking) => (
+              <tr key={booking._id}>
+                <td>{booking.fullName}</td>
+                <td>{booking.hotelName}</td>
+                <td>RM {booking.totalPrice}</td>
+                <td>{booking.paymentStatus}</td>
               </tr>
             ))}
           </tbody>
+
         </table>
 
       </div>
