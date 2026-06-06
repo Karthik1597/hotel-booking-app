@@ -27,6 +27,8 @@ const HotelList = () => {
         setHotels(filtered);
       } catch (error) {
         console.log(error);
+        console.log("CITY PARAM:", city);
+
       }
     };
 
