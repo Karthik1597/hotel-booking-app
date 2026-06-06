@@ -18,10 +18,8 @@ const HotelList = () => {
         const data = await res.json();
 
         // filter by city
-        const filtered = data.filter((hotel) =>
-          hotel.city
-            ?.toLowerCase()
-            .includes(city?.toLowerCase().split(" ")[0])
+        const filtered = hotels.filter((hotel) =>
+          hotel.city?.toLowerCase().trim() === city?.toLowerCase().trim()
         );
 
         setHotels(filtered);
