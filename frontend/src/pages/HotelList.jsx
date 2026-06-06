@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/HotelList.css";
 
@@ -15,9 +15,11 @@ const dummyHotels = [
 ];
 
 const HotelList = () => {
-
   const { city } = useParams();
   const navigate = useNavigate();
+
+  // ✅ SEARCH STATE (ADDED)
+  const [search, setSearch] = useState("");
 
   return (
     <div className="hotel-page">
@@ -26,42 +28,55 @@ const HotelList = () => {
         Hotels in {city}
       </h1>
 
+      {/* ✅ SEARCH BOX (ADDED) */}
+      <input
+        type="text"
+        placeholder="Search hotels..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="search-box"
+      />
+
       <div className="hotel-grid">
 
-        {dummyHotels.map((hotel, index) => (
+        {dummyHotels
+          .filter((hotel) =>
+            hotel.name.toLowerCase().includes(search.toLowerCase())
+          )
+          .map((hotel, index) => (
 
-          <div
-            key={index}
-            className="hotel-card"
-            style={{ cursor: "pointer" }}
-            onClick={() =>
-              navigate("/hotel-details", {
-                state: hotel
-              })
-            }
-          >
+            <div
+              key={index}
+              className="hotel-card"
+              style={{ cursor: "pointer" }}
+              onClick={() =>
+                navigate("/hotel-details", {
+                  state: hotel
+                })
+              }
+            >
 
-            <img
-              src={hotel.image}
-              alt={hotel.name}
-              className="hotel-img"
-            />
+              <img
+                src={hotel.image}
+                alt={hotel.name}
+                className="hotel-img"
+              />
 
-            <div className="hotel-info">
+              <div className="hotel-info">
 
-              <h3>{hotel.name}</h3>
+                <h3>{hotel.name}</h3>
 
-              <p className="price">
-                RM {hotel.price} / night
-              </p>
+                <p className="price">
+                  RM {hotel.price} / night
+                </p>
 
-              <p className="rating">
-                ⭐ {hotel.rating} Rating
-              </p>
+                <p className="rating">
+                  ⭐ {hotel.rating} Rating
+                </p>
+
+              </div>
 
             </div>
-
-          </div>
 
         ))}
 
