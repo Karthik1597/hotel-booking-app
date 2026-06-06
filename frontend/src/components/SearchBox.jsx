@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SearchBox = () => {
   const navigate = useNavigate();
@@ -10,7 +11,21 @@ const SearchBox = () => {
   const [guests, setGuests] = useState("");
 
   const handleSearch = () => {
-    if (!destination) return;
+    // ✅ validation added (important for interview UX)
+    if (!destination.trim()) {
+      toast.error("Please enter destination ❌");
+      return;
+    }
+
+    if (!checkIn || !checkOut) {
+      toast.error("Please select check-in and check-out dates ❌");
+      return;
+    }
+
+    if (checkIn > checkOut) {
+      toast.error("Check-out must be after check-in ❌");
+      return;
+    }
 
     navigate(`/hotels/${destination.toLowerCase()}`, {
       state: {
