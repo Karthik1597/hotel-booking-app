@@ -12,6 +12,9 @@ import BookingSuccess from "./pages/BookingSuccess";
 import AdminLogin from "./admin/AdminLogin";
 import AdminDashboard from "./admin/AdminDashboard";
 
+// ✅ ADD THIS LINE (NEW)
+import AddRoom from "./admin/pages/AddRoom";
+
 function App() {
   return (
     <BrowserRouter>
@@ -39,6 +42,9 @@ function App() {
         <Route path="/admin" element={<AdminLogin />} />
 
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
+        {/* ✅ ADD THIS ROUTE (NEW FIX) */}
+        <Route path="/admin/add-room" element={<AddRoom />} />
 
       </Routes>
     </BrowserRouter>
