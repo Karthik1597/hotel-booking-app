@@ -1,0 +1,39 @@
+.addroom-container {
+  padding: 40px;
+}
+
+.addroom-container h2 {
+  margin-bottom: 20px;
+}
+
+.addroom-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+}
+
+.addroom-form input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+}
+
+.addroom-form button {
+  padding: 12px;
+  background: #1e293b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.addroom-form button:hover {
+  background: #0f172a;
+}
+
+.msg {
+  color: green;
+  font-weight: bold;
+}
