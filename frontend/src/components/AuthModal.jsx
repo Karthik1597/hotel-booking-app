@@ -14,9 +14,8 @@ const AuthModal = ({ onClose }) => {
 
     try {
       const url = isLogin
-        ? "https://hotel-booking-api-8ysd.onrender.com/api/auth/login"
-        : "https://hotel-booking-api-8ysd.onrender.com/api/auth/register";
-
+  ? "https://hotel-booking-api-8ysd.onrender.com/api/auth/login"
+  : "https://hotel-booking-api-8ysd.onrender.com/api/auth/signup";
       const body = isLogin
         ? { email, password }
         : { username, email, password };
