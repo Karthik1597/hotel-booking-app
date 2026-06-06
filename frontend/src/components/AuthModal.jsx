@@ -14,8 +14,9 @@ const AuthModal = ({ onClose }) => {
 
     try {
       const url = isLogin
-  ? "https://hotel-booking-api-8ysd.onrender.com/api/auth/login"
-  : "https://hotel-booking-api-8ysd.onrender.com/api/auth/signup";
+        ? "https://hotel-booking-api-8ysd.onrender.com/api/auth/login"
+        : "https://hotel-booking-api-8ysd.onrender.com/api/auth/signup";
+
       const body = isLogin
         ? { email, password }
         : { username, email, password };
@@ -30,27 +31,28 @@ const AuthModal = ({ onClose }) => {
 
       const data = await response.json();
 
-      if (response.ok) {
-        if (isLogin) {
-          toast.success("Login successful ✅");
-
-          localStorage.setItem(
-            "user",
-            JSON.stringify(data)
-          );
-
-          onClose();
-        } else {
-          toast.success("Account created successfully ✅");
-
-          setIsLogin(true);
-          setUsername("");
-          setEmail("");
-          setPassword("");
-        }
-      } else {
+      // ❌ ERROR CASE
+      if (!response.ok) {
         toast.error(data.message || "Something went wrong ❌");
+        return;
       }
+
+      // ✅ SUCCESS CASE
+      if (isLogin) {
+        toast.success(data.message || "Login successful ✅");
+
+        localStorage.setItem("user", JSON.stringify(data.user));
+
+        onClose();
+      } else {
+        toast.success(data.message || "Account created successfully ✅");
+
+        setIsLogin(true);
+        setUsername("");
+        setEmail("");
+        setPassword("");
+      }
+
     } catch (error) {
       console.log(error);
       toast.error("Server error ❌");
@@ -61,16 +63,11 @@ const AuthModal = ({ onClose }) => {
     <div className="auth-overlay">
       <div className="auth-box">
 
-        <button
-          className="close-btn"
-          onClick={onClose}
-        >
+        <button className="close-btn" onClick={onClose}>
           ✖
         </button>
 
-        <h2>
-          {isLogin ? "Login" : "Sign Up"}
-        </h2>
+        <h2>{isLogin ? "Login" : "Sign Up"}</h2>
 
         <form onSubmit={handleSubmit}>
 
@@ -79,9 +76,7 @@ const AuthModal = ({ onClose }) => {
               type="text"
               placeholder="Username"
               value={username}
-              onChange={(e) =>
-                setUsername(e.target.value)
-              }
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
           )}
@@ -90,9 +85,7 @@ const AuthModal = ({ onClose }) => {
             type="email"
             placeholder="Email"
             value={email}
-            onChange={(e) =>
-              setEmail(e.target.value)
-            }
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
 
@@ -100,35 +93,20 @@ const AuthModal = ({ onClose }) => {
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) =>
-              setPassword(e.target.value)
-            }
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
 
           <button type="submit">
-            {isLogin
-              ? "Login"
-              : "Create Account"}
+            {isLogin ? "Login" : "Create Account"}
           </button>
 
         </form>
 
         <p>
-          {isLogin
-            ? "New user?"
-            : "Already have account?"}
-
-          {" "}
-
-          <span
-            onClick={() =>
-              setIsLogin(!isLogin)
-            }
-          >
-            {isLogin
-              ? "Sign Up"
-              : "Login"}
+          {isLogin ? "New user?" : "Already have account?"}{" "}
+          <span onClick={() => setIsLogin(!isLogin)}>
+            {isLogin ? "Sign Up" : "Login"}
           </span>
         </p>
 
