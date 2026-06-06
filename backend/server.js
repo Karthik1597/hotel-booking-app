@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import bookingRoutes from "./routes/bookingRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
+import hotelRoutes from "./routes/hotelRoutes.js";
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use("/api/payment", paymentRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/hotels", hotelRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hotel Booking API Running");
