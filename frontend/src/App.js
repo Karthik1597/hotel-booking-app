@@ -14,6 +14,7 @@ import AdminDashboard from "./admin/AdminDashboard";
 
 // ✅ ADD THIS LINE (NEW)
 import AddRoom from "./pages/AddRoom";
+import Users from "./pages/Users";
 
 function App() {
   return (
@@ -45,6 +46,8 @@ function App() {
 
         {/* ✅ ADD THIS ROUTE (NEW FIX) */}
         <Route path="/admin/add-room" element={<AddRoom />} />
+
+        <Route path="/admin/users" element={<Users />} />
 
       </Routes>
     </BrowserRouter>

@@ -48,7 +48,7 @@ const AdminDashboard = () => {
             Add Room
           </li>
 
-          <li>
+          <li onClick={() => navigate("/admin/users")}>
             Users
           </li>
         </ul>

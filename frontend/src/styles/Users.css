@@ -1,0 +1,28 @@
+.users-container {
+  padding: 20px;
+}
+
+.users-container h2 {
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th {
+  background: #111827;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
