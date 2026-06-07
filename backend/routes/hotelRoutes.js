@@ -1,9 +1,5 @@
 import express from "express";
-import {
-  getHotels,
-  createHotel,
-  deleteHotel,   // ✅ ADD THIS
-} from "../controllers/hotelController.js";
+import {getHotels,createHotel,deleteHotel,updateHotel,} from "../controllers/hotelController.js";
 
 const router = express.Router();
 
@@ -13,7 +9,7 @@ router.get("/", getHotels);
 // ADD HOTEL
 router.post("/", createHotel);
 
-// EDIT
+// UPDATE HOTEL
 router.put("/:id", updateHotel);
 
 // DELETE HOTEL
