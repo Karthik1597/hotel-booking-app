@@ -13,6 +13,9 @@ router.get("/", getHotels);
 // ADD HOTEL
 router.post("/", createHotel);
 
+// EDIT
+router.put("/:id", updateHotel);
+
 // DELETE HOTEL
 router.delete("/:id", deleteHotel);
 

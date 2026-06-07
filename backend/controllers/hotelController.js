@@ -26,6 +26,22 @@ export const createHotel = async (req, res) => {
   }
 };
 
+// EDIT HOTEL
+export const updateHotel = async (req, res) => {
+  try {
+    const hotel = await Hotel.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+
+    res.json(hotel);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// DELETE HOTEL
 export const deleteHotel = async (req, res) => {
   try {
     await Hotel.findByIdAndDelete(req.params.id);
