@@ -44,7 +44,15 @@ export const updateHotel = async (req, res) => {
 // DELETE HOTEL
 export const deleteHotel = async (req, res) => {
   try {
+    const adminKey = req.headers.authorization;
+
+    // simple admin protection
+    if (adminKey !== "admin123") {
+      return res.status(403).json({ message: "No permission to delete" });
+    }
+
     await Hotel.findByIdAndDelete(req.params.id);
+
     res.json({ message: "Deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
