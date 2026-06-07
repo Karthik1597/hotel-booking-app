@@ -6,7 +6,15 @@ const AdminDashboard = () => {
   const [bookings, setBookings] = useState([]);
   const navigate = useNavigate();
 
+  // PROTECT ADMIN PAGE
   useEffect(() => {
+    const isAdmin = localStorage.getItem("adminAuth");
+
+    if (!isAdmin) {
+      navigate("/admin");
+      return;
+    }
+
     const fetchBookings = async () => {
       try {
         const res = await fetch(
@@ -21,7 +29,13 @@ const AdminDashboard = () => {
     };
 
     fetchBookings();
-  }, []);
+  }, [navigate]);
+
+  // LOGOUT FUNCTION
+  const handleLogout = () => {
+    localStorage.removeItem("adminAuth");
+    navigate("/admin");
+  };
 
   // TOTAL BOOKINGS
   const totalBookings = bookings.length;
@@ -37,6 +51,7 @@ const AdminDashboard = () => {
 
       {/* SIDEBAR */}
       <div className="sidebar">
+
         <h2>Admin Panel</h2>
 
         <ul>
@@ -56,12 +71,20 @@ const AdminDashboard = () => {
             Add Room
           </li>
         </ul>
+
+        {/* LOGOUT BUTTON */}
+        <button
+          className="logout-btn"
+          onClick={handleLogout}
+        >
+          Logout
+        </button>
+
       </div>
 
       {/* MAIN CONTENT */}
       <div className="main-content">
 
-        {/* TOP CARDS */}
         <div className="cards">
 
           <div className="card">
@@ -76,7 +99,6 @@ const AdminDashboard = () => {
 
         </div>
 
-        {/* RECENT BOOKINGS */}
         <h3>Recent Bookings</h3>
 
         <table>
@@ -103,6 +125,7 @@ const AdminDashboard = () => {
         </table>
 
       </div>
+
     </div>
   );
 };
