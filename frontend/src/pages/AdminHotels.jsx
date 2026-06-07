@@ -31,22 +31,37 @@ const AdminHotels = () => {
         fetchHotels();
     }, []);
 
-    // DELETE HOTEL
+    // DELETE HOTEL WITH CONFIRMATION
     const deleteHotel = async (id) => {
+
+        const confirmDelete = window.confirm(
+            "Are you sure you want to delete this hotel?"
+        );
+
+        if (!confirmDelete) {
+            return;
+        }
+
         try {
-            await fetch(
+            const res = await fetch(
                 `https://hotel-booking-api-8ysd.onrender.com/api/hotels/${id}`,
                 {
                     method: "DELETE",
                     headers: {
-                        Authorization: "admin123", // 🔐 permission key
+                        Authorization: "admin123",
                     },
                 }
             );
 
+            const data = await res.json();
+
+            alert(data.message);
+
             fetchHotels();
+
         } catch (error) {
             console.log(error);
+            alert("Delete failed");
         }
     };
 
