@@ -13,7 +13,7 @@ import AdminLogin from "./admin/AdminLogin";
 import AdminDashboard from "./admin/AdminDashboard";
 
 // ✅ ADD THIS LINE (NEW)
-import AddRoom from "./admin/pages/AddRoom";
+import AddRoom from "./pages/AddRoom";
 
 function App() {
   return (
