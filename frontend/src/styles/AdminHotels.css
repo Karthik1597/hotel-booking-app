@@ -1,0 +1,98 @@
+/* Admin Hotels Page */
+.admin-hotels {
+  padding: 30px;
+  background: #f5f6fa;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Title */
+.admin-hotels h2 {
+  margin-bottom: 20px;
+  color: #222;
+  font-size: 24px;
+}
+
+/* Table container */
+.admin-hotels table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Table header */
+.admin-hotels thead {
+  background: #111827;
+  color: #fff;
+}
+
+.admin-hotels th,
+.admin-hotels td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+/* Table row hover */
+.admin-hotels tbody tr:hover {
+  background: #f1f5f9;
+  transition: 0.2s;
+}
+
+/* Image (if you add later) */
+.admin-hotels img {
+  width: 60px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Delete button */
+.delete-btn {
+  padding: 6px 12px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+
+/* Add button (optional future use) */
+.add-btn {
+  margin-bottom: 15px;
+  padding: 10px 16px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background: #059669;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .admin-hotels {
+    padding: 15px;
+  }
+
+  .admin-hotels table {
+    font-size: 13px;
+  }
+
+  .delete-btn {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}
