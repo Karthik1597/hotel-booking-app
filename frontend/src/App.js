@@ -15,6 +15,7 @@ import AdminDashboard from "./admin/AdminDashboard";
 // ✅ ADD THIS LINE (NEW)
 import AddRoom from "./pages/AddRoom";
 import Users from "./pages/Users";
+import AdminHotels from "./pages/AdminHotels";
 
 function App() {
   return (
@@ -48,6 +49,8 @@ function App() {
         <Route path="/admin/add-room" element={<AddRoom />} />
 
         <Route path="/admin/users" element={<Users />} />
+
+        <Route path="/admin/hotels" element={<AdminHotels />} />
 
       </Routes>
     </BrowserRouter>

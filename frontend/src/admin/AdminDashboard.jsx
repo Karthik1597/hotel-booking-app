@@ -44,12 +44,16 @@ const AdminDashboard = () => {
             Dashboard
           </li>
 
-          <li onClick={() => navigate("/admin/add-room")}>
-            Add Room
+          <li onClick={() => navigate("/admin/hotels")}>
+            Hotels
           </li>
 
           <li onClick={() => navigate("/admin/users")}>
             Users
+          </li>
+
+          <li onClick={() => navigate("/admin/add-room")}>
+            Add Room
           </li>
         </ul>
       </div>
