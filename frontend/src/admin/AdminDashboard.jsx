@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/AdminDashboard.css";
 
 const AdminDashboard = () => {
   const [bookings, setBookings] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -38,9 +40,17 @@ const AdminDashboard = () => {
         <h2>Admin Panel</h2>
 
         <ul>
-          <li>Dashboard</li>
-          <li>Add Room</li>
-          <li>Users</li>
+          <li onClick={() => navigate("/admin/dashboard")}>
+            Dashboard
+          </li>
+
+          <li onClick={() => navigate("/admin/add-room")}>
+            Add Room
+          </li>
+
+          <li>
+            Users
+          </li>
         </ul>
       </div>
 
