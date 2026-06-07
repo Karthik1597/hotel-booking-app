@@ -25,3 +25,12 @@ export const createHotel = async (req, res) => {
     });
   }
 };
+
+export const deleteHotel = async (req, res) => {
+  try {
+    await Hotel.findByIdAndDelete(req.params.id);
+    res.json({ message: "Deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

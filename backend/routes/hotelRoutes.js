@@ -12,4 +12,6 @@ router.get("/", getHotels);
 // ADD HOTEL
 router.post("/", createHotel);
 
+router.delete("/:id", deleteHotel);
+
 export default router;
